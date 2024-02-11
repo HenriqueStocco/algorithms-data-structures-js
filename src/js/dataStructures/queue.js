@@ -1,34 +1,45 @@
-// Queue -> (FIFO): First-In-First-Out
+/*
+Queue -> (FIFO): First-In-First-Out
+Structure used to maintain the order of execution, e.g:
+Imagine a print queue, where documents are printed in the order they are
+sent.
+ */
 
 class Queue {
   constructor() {
     this.items = [];
   }
-
-  addElement(element) {
+  // adds the element to the end of the queue
+  enqueue(element) {
     return this.items.push(element);
   }
 
-  delElement() {
-    return this.items.pop();
+  // removes the last element from the queue
+  dequeue() {
+    if (this.isEmpty()) undefined;
+    return this.items.shift();
   }
 
-  showTop() {
-    return this.items[this.items.length - 1];
+  // shows the first element in the queue
+  showFront() {
+    if (this.isEmpty()) undefined;
+    return this.items[0];
   }
 
+  // checks if the queue is empty
   isEmpty() {
     return this.items.length === 0;
   }
 
+  // shows the size of the queue
+  size() {
+    return this.items.length;
+  }
+
+  // clear the queue
   clear() {
     return this.items = [];
   }
-
-  showQueue() {
-    console.log(this.items);
-  }
-
 }
 
 let queue = new Queue();
@@ -36,31 +47,16 @@ let mapTest = new Map();
 
 mapTest.set((x = 1) => x + 1, 'JS is the best');
 
-// adding elements
-queue.addElement('hello');
-queue.addElement('world');
-queue.addElement(2024);
-queue.addElement([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
-queue.addElement({ 'name': 'John Doe' });
-queue.addElement(mapTest);
-
-// showing the queue before the element is removed
-queue.showQueue();
-
-// checks if the queue is empty
+queue.enqueue('hello');
+queue.enqueue('world');
+queue.enqueue(2024);
+queue.enqueue([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]);
+queue.enqueue({ 'name': 'John Doe' });
+queue.enqueue(mapTest);
+console.log(queue);
 console.log(queue.isEmpty());
-
-// removing element: map object and literal object
-queue.delElement();
-queue.delElement();
-
-// showing the queue
-queue.showQueue();
-
-// showing the last element
-console.log(queue.showTop());
-
-// cleaning the queue
+queue.dequeue();
+queue.dequeue();
+console.log(queue.showFront());
 queue.clear();
-
 console.log(queue.isEmpty());
