@@ -1,8 +1,9 @@
 {
-  "name": "datastructures",
+  "name": "data-structures",
   "version": "1.0.0",
-  "description": "learning about data structures",
+  "description": "learning about data structures in JS and Python3",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
